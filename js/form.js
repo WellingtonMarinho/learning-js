@@ -11,17 +11,30 @@ botaoAdicionar.addEventListener('click', function(event){
 
     let pacienteTr = montaTr(paciente)
 
-    let error = validaPaciente(paciente)
-    if(error.length > 0){
-      document.querySelector('#mensagem-erro').textContent = error
+    let erros = validaPaciente(paciente)
+    if(erros.length > 0){
+      exibeMensagensDeErro(erros)
       return
     }
-
 
     let tabela = document.querySelector('#tabela-pacientes')
     tabela.appendChild(pacienteTr)
     form.reset()
+    let mensagensDeErro = document.querySelector('#mensagens-erro')
+    mensagensDeErro.innerHTML = ''
 })
+
+function exibeMensagensDeErro(erros){
+    var ul = document.querySelector('#mensagens-erro')
+    ul.innerHTML = ""
+
+    erros.forEach(function(erro){
+        let li = document.createElement('li')
+        li.textContent = erro
+        ul.appendChild(li)
+
+    })
+}
 
 
 function obtemDadosDoFormulario(form){
@@ -56,15 +69,20 @@ function montaTd(dado, classe){
 
 function validaPaciente(paciente){
     let erros  = []
+    if (paciente.nome == ''){
+        erros.push('Campo nome não pode ficar em branco!')
+    }
     if(!verificaPeso(paciente.peso)){
         erros.push('Peso inválido!')
     }
-    else if (!verificaAltura(paciente.altura)){
+    if (!verificaAltura(paciente.altura)){
         erros.push('Altura inválida!')
+    }
+    if (paciente.gordura == ''){
+        erros.push('Campo gordura não pode ficar em branco!')
     }
     return erros
 }
-
 
 
 //
