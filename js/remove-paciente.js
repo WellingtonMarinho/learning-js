@@ -1,6 +1,3 @@
-let pacientes = document.querySelectorAll('.paciente')
-console.log(pacientes)
-
 let tabela = document.querySelector('table')
 tabela.addEventListener('dblclick', function(event){
     event.target.parentNode.classList.add('fadeOut')

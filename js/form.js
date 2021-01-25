@@ -1,7 +1,6 @@
 
 let botaoAdicionar = document.querySelector('#adicionar-paciente')
 
-
 botaoAdicionar.addEventListener('click', function(event){
     event.preventDefault();
     let form = document.querySelector('#form-adicionar')
@@ -23,6 +22,7 @@ botaoAdicionar.addEventListener('click', function(event){
     let mensagensDeErro = document.querySelector('#mensagens-erro')
     mensagensDeErro.innerHTML = ''
 })
+
 
 function exibeMensagensDeErro(erros){
     var ul = document.querySelector('#mensagens-erro')
@@ -48,6 +48,7 @@ function obtemDadosDoFormulario(form){
   return paciente
 }
 
+
 function montaTr(paciente){
   let pacienteTr = document.createElement('tr')
   pacienteTr.classList.add('paciente')
@@ -60,12 +61,14 @@ function montaTr(paciente){
   return pacienteTr
 }
 
+
 function montaTd(dado, classe){
     let td = document.createElement('td')
     td.textContent = dado
     td.classList.add(classe)
     return td
 }
+
 
 function validaPaciente(paciente){
     let erros  = []
@@ -83,6 +86,3 @@ function validaPaciente(paciente){
     }
     return erros
 }
-
-
-//

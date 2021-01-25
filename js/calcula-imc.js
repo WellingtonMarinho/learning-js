@@ -59,5 +59,3 @@ function calculaIMCSemValidar(peso, altura){
 }
 
 percoreListaDePacientes()
-
-//teste
