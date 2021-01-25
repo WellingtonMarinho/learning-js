@@ -5,10 +5,12 @@ buscarPacientes.addEventListener('click', function(){
     // http://api-pacientes.herokuapp.com/pacientes
     let xhr =  new XMLHttpRequest();
 
-    xhr.open("GET", 'http://api-pacientes.herokuapp.com/pacienntes')
+    xhr.open("GET", 'http://api-pacientes.herokuapp.com/pacientes')
+    let erroRequest = document.querySelector('#erro-ajax')
 
     xhr.addEventListener('load', function(){
         if (xhr.status == 200){
+          erroRequest.classList.add('invisivel')
           let response = xhr.responseText
           var pacientes = JSON.parse(response)
 
